@@ -10,6 +10,9 @@ npm start
 
 nos dara un mensajes en la terminal indicando que la base de datos está conectada y que el servidor está escuchando en un puerto 3000.
 
+
+
+
 2. Prueba de Registro de Usuario
 Este endpoint permite crear una nueva cuenta de usuario en el sistema.
 
@@ -38,6 +41,7 @@ Si hay un error (Datos Inválidos / Usuario Existente): Mostrará un código de 
 
 
 
+
 3. Prueba de Inicio de Sesión (Login)
 Este endpoint permite autenticar un usuario existente y obtener un nuevo token de sesión.
 
@@ -63,6 +67,8 @@ Salida:
 Si es exitoso (Autenticación Exitosa): se recibira un código de estado 200 OK. La respuesta JSON contendrá la información del usuario y un nuevo token. 
 
 Si hay un error (Credenciales Incorrectas): generará un código de estado 401 Unauthorized. 
+
+
 
 
 4. Prueba de Obtener Perfil de Usuario (Ruta Protegida)
