@@ -1,6 +1,6 @@
 Guía Rápida para Probar Sistema de Autenticación Node.js
 
-1. Iniciar tu Servidor Node.js
+1. Iniciar el Servidor Node.js
 
 Abrir la terminal.
 Navegar hasta la carpeta raíz del proyecto.
