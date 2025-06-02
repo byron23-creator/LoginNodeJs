@@ -1,6 +1,6 @@
-Guía Rápida para Probar Sistema de Autenticación Node.js
+# Guía Rápida para Probar Sistema de Autenticación Node.js
 
-1. Iniciar el Servidor Node.js
+## 1. Iniciar el Servidor Node.js
 
 Abrir la terminal.
 Navegar hasta la carpeta raíz del proyecto.
@@ -13,7 +13,7 @@ nos dara un mensajes en la terminal indicando que la base de datos está conecta
 
 
 
-2. Prueba de Registro de Usuario
+## 2. Prueba de Registro de Usuario
 Este endpoint permite crear una nueva cuenta de usuario en el sistema.
 
 En Postman:
@@ -42,7 +42,7 @@ Si hay un error (Datos Inválidos / Usuario Existente): Mostrará un código de 
 
 
 
-3. Prueba de Inicio de Sesión (Login)
+## 3. Prueba de Inicio de Sesión (Login)
 Este endpoint permite autenticar un usuario existente y obtener un nuevo token de sesión.
 
 En Postman:
@@ -71,7 +71,7 @@ Si hay un error (Credenciales Incorrectas): generará un código de estado 401 U
 
 
 
-4. Prueba de Obtener Perfil de Usuario (Ruta Protegida)
+## 4. Prueba de Obtener Perfil de Usuario (Ruta Protegida)
 Este endpoint demuestra cómo las rutas del API pueden ser protegidas, requiriendo un token JWT válido para el acceso.
 
 En Postman:
