@@ -1,0 +1,511 @@
+{
+	"info": {
+		"_postman_id": "764f6974-e34d-426b-950c-e2f7b8893457",
+		"name": "JWT Auth MySQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_collection_link": "https://www.postman.com/collections/764f6974-e34d-426b-950c-e2f7b8893457?action=share&creator=21459461&type=collection&uid=21459461"
+	},
+	"item": [
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Autentica un usuario existente y devuelve un token JWT."
+			},
+			"response": [
+				{
+					"name": "Successful Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "111"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6f-nNl0J5bJ0oY2zX0mF4y7Q2j6P1d1R8g2\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 00:00:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inicio de sesión exitoso\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE4MjIyMDAwLCJleHAiOjE3MTgyMjU2MDB9.EXAMPLE_TOKEN\",\n    \"userId\": 1,\n    \"email\": \"test@example.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Register User (Protected)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text",
+						"description": "Reemplaza {{jwt_token}} con el token obtenido del login."
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"newuser@example.com\",\n    \"password\": \"newpassword123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Registra un nuevo usuario."
+			},
+			"response": [
+				{
+					"name": "Successful Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"another@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-aB7q8sJ0k1m2n3p4q5r6t7u8v9w0x1y2\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 00:00:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario registrado exitosamente\",\n    \"userId\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Logged In User Info (Protected)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text",
+						"description": "token existente."
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"me"
+					]
+				},
+				"description": "Usuario logueado"
+			},
+			"response": [
+				{
+					"name": "User Info",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2c-i9y2K6p3m5n8s7j0d1f4h7l0q3r6t9u2\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 00:00:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"email\": \"test@example.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Protected Route without Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"me"
+					]
+				},
+				"description": "error de autorización."
+			},
+			"response": [
+				{
+					"name": "Unauthorized Access",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-xY1z2L5t6h9n7j4m3c2b1a0p9o8i7u6\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 00:00:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No hay token. Acceso no autorizado.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Register User (without Token)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"unauthorized@example.com\",\n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Intenta registrar un usuario sin proporcionar un token JWT. Debería resultar en un error de autorización, ya que esta ruta es protegida."
+			},
+			"response": [
+				{
+					"name": "Unauthorized Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"unauthorized@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-xY1z2L5t6h9n7j4m3c2b1a0p9o8i7u6\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jun 2025 00:00:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No hay token. Acceso no autorizado.\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": ""
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Token automatico guardado",
+					"if (pm.request.url.includes('/api/auth/login') && pm.response.code === 200) {",
+					"    const responseJson = pm.response.json();",
+					"    pm.environment.set(\"jwt_token\", responseJson.token);",
+					"    console.log(\"Token JWT guardado en variable de entorno: \" + responseJson.token);",
+					"}"
+				]
+			}
+		}
+	]
+}
