@@ -1,4 +1,4 @@
-# Sistema de Autenticación JWT en Node.js con MySQL
+# Login JWT en Node.js con MySQL
 
 Este proyecto implementa un sistema de autenticación de usuarios utilizando JSON Web Tokens en Node.js, Express y MySQL. Incluye funcionalidades de registro, login y rutas protegidas.
 
